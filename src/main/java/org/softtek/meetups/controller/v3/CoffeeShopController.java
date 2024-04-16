@@ -1,27 +1,29 @@
 package org.softtek.meetups.controller.v3;
 
-import io.smallrye.mutiny.Multi;
-import io.smallrye.mutiny.Uni;
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.ws.rs.sse.SseEventSink;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.Produces;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.sse.Sse;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.sse.Sse;
-import jakarta.ws.rs.sse.SseEventSink;
-import org.jboss.logging.Logger;
+
 import org.softtek.meetups.dao.CoffeeOrderRequest;
 import org.softtek.meetups.dao.CoffeeOrderResponse;
 import org.softtek.meetups.model.CoffeeStatus;
 import org.softtek.meetups.service.CoffeeService;
 
-import java.time.Duration;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static io.quarkus.runtime.configuration.ConfigurationRuntimeConfig.BuildTimeMismatchAtRuntime.fail;
+import org.jboss.logging.Logger;
+
+import io.smallrye.mutiny.Multi;
+import io.smallrye.mutiny.Uni;
+
+import java.time.Duration;
 
 @ApplicationScoped
 @Path("/api/v3")

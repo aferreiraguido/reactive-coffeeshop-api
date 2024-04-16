@@ -1,24 +1,24 @@
 package org.softtek.meetups.controller.v1;
 
-import io.smallrye.common.annotation.Blocking;
-import io.smallrye.jwt.build.Jwt;
-import jakarta.annotation.security.PermitAll;
+import org.softtek.meetups.exception.UnauthorizedException;
+import org.softtek.meetups.dao.AuthorizationResponse;
+import org.softtek.meetups.dao.AuthorizationRequest;
+
 import jakarta.enterprise.context.ApplicationScoped;
+import io.smallrye.common.annotation.Blocking;
+import jakarta.annotation.security.PermitAll;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.Produces;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import org.eclipse.microprofile.jwt.Claims;
+
+import io.smallrye.jwt.build.Jwt;
+
 import org.jboss.logging.Logger;
-import org.softtek.meetups.dao.AuthorizationRequest;
-import org.softtek.meetups.dao.AuthorizationResponse;
-import org.softtek.meetups.exception.UnauthorizedException;
 
 import java.time.Instant;
-import java.time.temporal.TemporalAmount;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 

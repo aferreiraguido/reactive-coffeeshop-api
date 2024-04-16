@@ -1,0 +1,14 @@
+# JWT generation
+smallrye:
+  jwt:
+    sign:
+      key:
+        location: privateKey.pem
+
+# JWT checks
+mp:
+  jwt:
+    verify:
+      publickey:
+        location: publicKey.pem
+      issuer: http://localhost

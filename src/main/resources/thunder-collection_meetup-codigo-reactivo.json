@@ -1,0 +1,272 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "meetup-codigo-reactivo",
+    "dateExported": "2024-04-16T19:25:19.730Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "16fea852-0c17-4efb-b0de-5827d117a2e7",
+            "name": "v1",
+            "containerId": "",
+            "created": "2024-04-14T17:12:31.567Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "7ec4aec2-da3e-4ce9-aad7-e0631e686f00",
+            "name": "v2",
+            "containerId": "",
+            "created": "2024-04-14T17:13:00.382Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "88be1951-b70c-44f6-a7ef-4ed596d6b91a",
+            "name": "v3",
+            "containerId": "",
+            "created": "2024-04-16T19:14:32.504Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "f4abf96d-07ab-41f9-adf8-6911fef1fc5f",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "88be1951-b70c-44f6-a7ef-4ed596d6b91a",
+            "name": "coffee-alex-request",
+            "url": "http://localhost:8080/api/v3/request",
+            "method": "POST",
+            "sortNum": 5000,
+            "created": "2024-04-16T19:15:04.456Z",
+            "modified": "2024-04-16T19:15:46.521Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"coffee\": \"Mocha\",\n  \"customer\": \"Alex\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{customer_auth_token}}"
+            }
+        },
+        {
+            "_id": "2b1724a9-7d11-4781-913b-ea9cb634b5b2",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "16fea852-0c17-4efb-b0de-5827d117a2e7",
+            "name": "authorize-customer",
+            "url": "http://localhost:8080/api/v1/authorize",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-04-14T17:12:13.630Z",
+            "modified": "2024-04-16T19:02:58.281Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"customer\",\n  \"password\": \"customer\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.auth_token",
+                    "action": "setto",
+                    "value": "{{customer_auth_token, local}}"
+                }
+            ]
+        },
+        {
+            "_id": "bdbd21d2-7745-48f9-b36b-e8189f53f4b5",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "7ec4aec2-da3e-4ce9-aad7-e0631e686f00",
+            "name": "pay-alice-coffee",
+            "url": "http://localhost:8080/api/v2/pay/{{alice-request-id}}",
+            "method": "PUT",
+            "sortNum": 10000,
+            "created": "2024-04-14T17:13:04.513Z",
+            "modified": "2024-04-16T19:19:27.429Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{customer_auth_token}}"
+            }
+        },
+        {
+            "_id": "24827b89-e184-4f43-bad2-d4ab93d732ca",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "88be1951-b70c-44f6-a7ef-4ed596d6b91a",
+            "name": "progress-alex-coffee-v1",
+            "url": "http://localhost:8080/api/v1/progress/f9b2952b-0df4-40e1-9927-e0196a7fe5b8",
+            "method": "PUT",
+            "sortNum": 10000,
+            "created": "2024-04-16T19:14:50.813Z",
+            "modified": "2024-04-16T19:24:21.320Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{staff_auth_token}}"
+            }
+        },
+        {
+            "_id": "01e21162-0f81-4084-a1be-0683c38b492e",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "16fea852-0c17-4efb-b0de-5827d117a2e7",
+            "name": "authorize-staff",
+            "url": "http://localhost:8080/api/v1/authorize",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2024-04-16T19:01:29.969Z",
+            "modified": "2024-04-16T19:03:20.559Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"staff\",\n  \"password\": \"staff\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.auth_token",
+                    "action": "setto",
+                    "value": "{{staff_auth_token, local}}"
+                }
+            ]
+        },
+        {
+            "_id": "907d9c74-587b-4c96-a804-26d351ca454b",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "7ec4aec2-da3e-4ce9-aad7-e0631e686f00",
+            "name": "pay-bob-coffee",
+            "url": "http://localhost:8080/api/v2/pay/{{bob-request-id}}",
+            "method": "PUT",
+            "sortNum": 15000,
+            "created": "2024-04-16T19:13:03.303Z",
+            "modified": "2024-04-16T19:19:50.401Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{customer_auth_token}}"
+            }
+        },
+        {
+            "_id": "1007c98c-3a19-4932-9c8f-36d1818f563f",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "16fea852-0c17-4efb-b0de-5827d117a2e7",
+            "name": "coffee-alice-request",
+            "url": "http://localhost:8080/api/v1/request",
+            "method": "POST",
+            "sortNum": 17500,
+            "created": "2024-04-16T19:03:36.111Z",
+            "modified": "2024-04-16T19:09:24.823Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"coffee\": \"Latte\",\n  \"customer\": \"Alice\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{customer_auth_token}}"
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.request",
+                    "action": "setto",
+                    "value": "{{alice-request-id, local}}"
+                }
+            ]
+        },
+        {
+            "_id": "b1b02820-ae4c-4d4b-a45e-97ce30733762",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "16fea852-0c17-4efb-b0de-5827d117a2e7",
+            "name": "coffee-bob-request",
+            "url": "http://localhost:8080/api/v1/request",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-14T17:39:44.515Z",
+            "modified": "2024-04-16T19:09:43.504Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"coffee\": \"Americano\",\n  \"customer\": \"Bob\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{customer_auth_token}}"
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.request",
+                    "action": "setto",
+                    "value": "{{bob-request-id, local}}"
+                }
+            ]
+        },
+        {
+            "_id": "e4efd9ae-83be-436d-a42c-83336cc86952",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "7ec4aec2-da3e-4ce9-aad7-e0631e686f00",
+            "name": "coffee-orders",
+            "url": "http://localhost:8080/api/v2/orders",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-04-14T17:40:48.926Z",
+            "modified": "2024-04-16T19:20:35.760Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{staff_auth_token}}"
+            }
+        },
+        {
+            "_id": "d8ed27e9-9394-4b78-90c9-03bf14c65b9b",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "16fea852-0c17-4efb-b0de-5827d117a2e7",
+            "name": "coffee-orders",
+            "url": "http://localhost:8080/api/v1/orders",
+            "method": "GET",
+            "sortNum": 32500,
+            "created": "2024-04-14T17:12:50.974Z",
+            "modified": "2024-04-16T19:06:16.065Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{staff_auth_token}}"
+            }
+        },
+        {
+            "_id": "b34a5d08-9b7f-4525-bed7-3c4495ed331d",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "16fea852-0c17-4efb-b0de-5827d117a2e7",
+            "name": "progress-alice-coffee",
+            "url": "http://localhost:8080/api/v1/progress/{{alice-request-id}}",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-04-14T17:12:48.854Z",
+            "modified": "2024-04-16T19:07:02.450Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{staff_auth_token}}"
+            }
+        },
+        {
+            "_id": "c09e6b02-5d98-4a83-a946-4b35e328ae8a",
+            "colId": "e2ebecfb-0187-4d81-be6b-2885f6169e36",
+            "containerId": "16fea852-0c17-4efb-b0de-5827d117a2e7",
+            "name": "progress-bob-coffee",
+            "url": "http://localhost:8080/api/v1/progress/{{bob-request-id}}",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-04-16T19:09:50.055Z",
+            "modified": "2024-04-16T19:10:18.233Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{staff_auth_token}}"
+            }
+        }
+    ]
+}
